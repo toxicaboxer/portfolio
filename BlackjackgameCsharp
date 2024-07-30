@@ -1,0 +1,324 @@
+using System.ComponentModel.Design;
+using System.Text;
+
+internal class Program
+{
+
+    private static void Main(string[] args)
+    {
+        Console.OutputEncoding = Encoding.UTF8;
+        // karty pre hru 
+        // ♠ ♥ ♣ ♦ 
+
+        String[] Srdcia = {"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
+        String[] Kary = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
+        String[] Krize = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
+        String[] Piky = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
+
+        String[][] Karty = { Srdcia, Kary, Krize, Piky };
+        String[] Kartymena = { "♥", "♦", "♣", "♦" };
+
+
+        //variables
+        String Start = "";
+        String karta = "";
+        String prvakarta = "";
+        String druhakarta = "" ;
+        String tretiakarta = "";
+        String stvrtakarta = "";
+        String randomkarta; 
+        String randomkartadealer;
+        String randomkarta1;
+        String randomkartadealer1;
+        String randomkarta2;
+        String randomkarta3;
+        String znakkartyH;
+        String znakkartyH1;
+        String znakkartyH2;
+        String znakkartyH3;
+        String znakkartyD;
+        String znakkartyD1;
+        String Start2;
+
+        int pocetkariet = 0;
+        int i = 0;
+
+        //generator random indexov
+        Random random = new Random();
+        int randomindexH = random.Next(4);
+        int randomznakH = random.Next(13);
+        int randomindexH1 = random.Next(4);
+        int randomznakH1 = random.Next(13);
+        int randomindexH2 = random.Next(4);
+        int randomznakH2 = random.Next(13);
+        int randomindexH3 = random.Next(4);
+        int randomznakH3 = random.Next(13);
+        int randomindexD = random.Next(4);
+        int randomznakD = random.Next(13);
+        int randomindexD1 = random.Next(4);
+        int randomznakD1 = random.Next(13);
+
+        /*deklarovanie znaku karty
+        znakkartyH = Kartymena[randomindexH];
+        znakkartyD = Kartymena[randomindexD];
+        randomkarta = Karty[randomindexH][randomznakH];
+        randomkartadealer = Karty[randomindexD][randomznakD];
+        //Console.WriteLine(znakkartyH + randomkarta);
+        //Console.WriteLine(znakkartyD + randomkartadealer);
+
+        /*randomkarta = Karty[randomindexH][randomznakH];
+        randomkartadealer = Karty[randomindexD][randomznakD];*/
+        //Console.WriteLine(randomkarta);
+        //Console.WriteLine(randomkartadealer);
+        Console.Write("Hrat hru (Y/N) ? ");
+        Start = Console.ReadLine();
+
+        //spustenie hry 
+        switch (Start)
+        {
+            case "Y":
+                //prve rozdanie kariet
+                //hrac
+                Console.WriteLine("Karty hrac: ");
+                znakkartyH = Kartymena[randomindexH];
+                znakkartyH1 = Kartymena[randomindexH1];
+                randomkarta = Karty[randomindexH][randomznakH];
+                randomkarta1 = Karty[randomindexH1][randomznakH1];
+                Console.WriteLine(znakkartyH + randomkarta);
+                Console.WriteLine(znakkartyH1 + randomkarta1);
+                //dealer
+                Console.WriteLine("Karty dealer:");
+                znakkartyD = Kartymena[randomindexD];
+                znakkartyD1 = Kartymena[randomindexD1];
+                randomkartadealer = Karty[randomindexD][randomznakD];
+                randomkartadealer1 = Karty[randomindexD1][randomznakD1];
+                Console.WriteLine(znakkartyD + randomkartadealer);
+                Console.WriteLine("Druha dealerova karta");
+                i = 2;
+                //Console.WriteLine(i);
+                Console.WriteLine("Pridat tretiu kartu ?[Y/N]");
+                karta = Console.ReadLine();
+                while (karta == "Y")
+                {
+                    //druhe rozdanie kariet
+                    //hrac
+                    Console.WriteLine("Karty hrac: ");
+                    znakkartyH = Kartymena[randomindexH];
+                    znakkartyH1 = Kartymena[randomindexH1];
+                    znakkartyH2 = Kartymena[randomindexH2];
+                    randomkarta = Karty[randomindexH][randomznakH];
+                    randomkarta1 = Karty[randomindexH1][randomznakH1];
+                    randomkarta2 = Karty[randomindexH2][randomznakH2];
+                    Console.WriteLine(znakkartyH + randomkarta);
+                    Console.WriteLine(znakkartyH1 + randomkarta1);
+                    Console.WriteLine(znakkartyH2 + randomkarta2);
+                    //dealer
+                    Console.WriteLine("Karty dealer:");
+                    znakkartyD = Kartymena[randomindexD];
+                    znakkartyD1 = Kartymena[randomindexD1];
+                    randomkartadealer = Karty[randomindexD][randomznakD];
+                    randomkartadealer1 = Karty[randomindexD1][randomznakD1];
+                    Console.WriteLine(znakkartyD + randomkartadealer);
+                    Console.WriteLine("Druha dealerova karta");
+                    i = 3;
+                    //Console.WriteLine(i);
+                    Console.WriteLine("Pridat stvrtu kartu ?[Y/N]");
+                    druhakarta = Console.ReadLine();
+                    if (druhakarta == "Y")
+                    {
+                        //tretie rozdanie kariet
+                        //hrac
+                        Console.WriteLine("Karty hrac: ");
+                        znakkartyH = Kartymena[randomindexH];
+                        znakkartyH1 = Kartymena[randomindexH1];
+                        znakkartyH2 = Kartymena[randomindexH2];
+                        znakkartyH3 = Kartymena[randomindexH3];
+                        randomkarta = Karty[randomindexH][randomznakH];
+                        randomkarta1 = Karty[randomindexH1][randomznakH1];
+                        randomkarta2 = Karty[randomindexH2][randomznakH2];
+                        randomkarta3 = Karty[randomindexH2][randomznakH2];
+                        Console.WriteLine(znakkartyH + randomkarta);
+                        Console.WriteLine(znakkartyH1 + randomkarta1);
+                        Console.WriteLine(znakkartyH2 + randomkarta2);
+                        Console.WriteLine(znakkartyH3 + randomkarta3);
+                        //dealer
+                        Console.WriteLine("Karty dealer:");
+                        znakkartyD = Kartymena[randomindexD];
+                        znakkartyD1 = Kartymena[randomindexD1];
+                        randomkartadealer = Karty[randomindexD][randomznakD];
+                        randomkartadealer1 = Karty[randomindexD1][randomznakD1];
+                        Console.WriteLine(znakkartyD + randomkartadealer);
+                        Console.WriteLine("Druha dealerova karta");
+                        karta = "N";
+                        i = 4;
+                        //Console.WriteLine(i);
+                        //vypocetkariet(randomkarta, randomkarta1, randomkarta2, randomkarta3, randomkartadealer, randomkartadealer1);
+                    }
+                    else
+                    {    
+                        karta = "N";
+                    }
+                    //vypocetkariet(randomkarta, randomkarta1, randomkarta2, "", randomkartadealer, randomkartadealer1);
+                }
+                
+                randomkarta2 = Karty[randomindexH2][randomznakH2];
+                randomkarta3 = Karty[randomindexH2][randomznakH2];
+                znakkartyH2 = Kartymena[randomindexH2];
+                znakkartyH3 = Kartymena[randomindexH3];
+
+                if (i == 4) 
+                {
+                    Vypocetkariet(randomkarta, randomkarta1, randomkarta2, randomkarta3, randomkartadealer, randomkartadealer1);
+                    Console.WriteLine("DEALEROVE KARTY: ");
+                    Console.Write(" " + znakkartyD + randomkartadealer);
+                    Console.WriteLine(" " + znakkartyD1 + randomkartadealer1);
+                }
+                else if (i == 3)
+                {
+                    Vypocetkariet(randomkarta, randomkarta1, randomkarta2, "", randomkartadealer, randomkartadealer1);
+                    Console.WriteLine("DEALEROVE KARTY: ");
+                    Console.Write(" " + znakkartyD + randomkartadealer);
+                    Console.WriteLine(" " + znakkartyD1 + randomkartadealer1);
+                }
+                else 
+                {
+                    Vypocetkariet(randomkarta, randomkarta1, "", "", randomkartadealer, randomkartadealer1);
+                    Console.WriteLine("DEALEROVE KARTY: ");
+                    Console.Write(" " + znakkartyH + randomkartadealer);
+                    Console.WriteLine(" " + znakkartyD1 + randomkartadealer1);
+                }
+                /*Console.WriteLine("Hrat znova ? (Y/N)");
+                Start2 = Console.ReadLine();
+                if (Start2 == "Y")
+                {
+                    Start = "Y";
+                }
+                else 
+                { 
+                    Start= "N"; 
+                }*/
+                break;
+            case "N":
+                Console.WriteLine("Koniec hry");
+                break;
+            default:
+                //Console.ReadKey();
+                break;
+        }
+        //Console.WriteLine("Hrat znova ? (Y/N)");
+        //Start = Console.ReadLine();
+        //Console.ReadKey();
+
+    }
+
+    static void Vypocetkariet(String karta1, String karta2, String karta3, String karta4, String karta5, String karta6)
+    {   
+        //variables
+        String[] KARTY = { karta1, karta2, karta3, karta4, karta5, karta6 };
+        int[] kartyhodnoty = new int[KARTY.Length];
+        int SUMHRAC;
+        int SUMDEALER;
+
+        //priradenie hodnot kartam
+        for (int i = 0; i < KARTY.Length; i++)
+        {
+            if (string.IsNullOrEmpty(KARTY[i]))
+            {
+                kartyhodnoty[i] = 0;
+            }
+            else if (KARTY[i] == "A" || KARTY[i] == "J" || KARTY[i] == "Q" || KARTY[i] == "K")
+            {
+                kartyhodnoty[i] = 10;
+            }
+            else
+            {
+                if (int.TryParse(KARTY[i], out int value))
+                {
+                    kartyhodnoty[i] = value;
+                }
+                //kartyhodnoty[i] = Convert.ToInt32(KARTY[i]);
+            }
+        }
+        for (int i = 0; i < KARTY.Length; i++)
+        {
+            if (KARTY[i] == "A")
+            {
+                if (kartyhodnoty[i] == 10)
+                {
+                    SUMHRAC = kartyhodnoty[0] + kartyhodnoty[1] + kartyhodnoty[2] + kartyhodnoty[3];
+                    if (SUMHRAC > 21)
+                    {
+                        kartyhodnoty[i] = 1;
+                        SUMHRAC = kartyhodnoty[0] + kartyhodnoty[1] + kartyhodnoty[2] + kartyhodnoty[3];
+                    }
+                    else
+                    {
+                        SUMHRAC = kartyhodnoty[0] + kartyhodnoty[1] + kartyhodnoty[2] + kartyhodnoty[3];
+                    }
+                }
+                else
+                {
+                }
+            }
+            else
+            {
+            }
+        }
+
+        //vypocet hodnoty a vratenie premennych 
+        SUMHRAC = kartyhodnoty[0] + kartyhodnoty[1] + kartyhodnoty[2] + kartyhodnoty[3];
+        SUMDEALER = kartyhodnoty[4] + kartyhodnoty[5];
+        String suma = Convert.ToString(SUMHRAC);
+        String suma1 = Convert.ToString(SUMDEALER);
+
+        if (SUMHRAC <= 21 && SUMDEALER <= 21)
+        {
+            if (SUMHRAC > SUMDEALER)
+            {
+
+                Console.Write("Hrac body:");
+                Console.Write(" " + SUMHRAC);
+                Console.Write("  Dealer body:");
+                Console.WriteLine(" " + SUMDEALER);               
+                Console.WriteLine("GRATULUJEME VYHRALI STE");
+            }
+            else if (SUMHRAC == SUMDEALER)
+            {
+                Console.Write("Hrac body:");
+                Console.Write(" " + SUMHRAC);
+                Console.Write("  Dealer body:");
+                Console.WriteLine(" " + SUMDEALER);
+                Console.WriteLine("REMIZA/PUSH");
+            }
+            else
+            {
+                Console.Write("Hrac body:");
+                Console.Write(" " + SUMHRAC);
+                Console.Write("  Dealer body:");
+                Console.WriteLine(" " + SUMDEALER);
+                Console.WriteLine("BOHUZIAL VYHRAL DEALER");
+
+            }
+        }
+        else
+        {
+
+            Console.Write("Hrac body:");
+            Console.Write(" " + SUMHRAC);
+            Console.Write("  Dealer body:");
+            Console.WriteLine(" " + SUMDEALER);
+            Console.WriteLine("VYHRAL DEALER");
+        }
+
+        //int SUMHRAC = kartyhodnoty[0] + kartyhodnoty[1] + kartyhodnoty[2] + kartyhodnoty[3];
+        //int SUMDEALER = kartyhodnoty[4] + kartyhodnoty[5];
+        //String suma = Convert.ToString(SUMHRAC);
+        //String suma1 = Convert.ToString(SUMDEALER);
+
+        /*Console.WriteLine(suma);
+        Console.WriteLine(suma1);*/
+
+
+        //Console.WriteLine(karta1 + karta2 + karta3 + karta4 + karta5 + karta6 );
+    }
+}
